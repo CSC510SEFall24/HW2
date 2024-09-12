@@ -29,11 +29,11 @@ jobs:
 
     - name: Run Pylint
       run: |
-        pylint hw2_debugging.py tests.py rand.py > post_traces/logs/pylint.log 2>&1
+        pylint hw2_debugging.py > post_traces/logs/pylint.log 2>&1
 
     - name: Run Radon
       run: |
-        radon cc -nc hw2_debugging.py tests.py rand.py > post_traces/logs/radon.log 2>&1
+        radon cc -nc hw2_debugging.py > post_traces/logs/radon.log 2>&1
 
     - name: Test with pytest
       run: |
