@@ -37,9 +37,9 @@ jobs:
 
     - name: Run Radon
       run: |
-        radon cc -nc hw2_debugging.py > post_traces/radon.log 2>&1 || true
-        radon cc -nc rand.py >> post_traces/radon.log 2>&1 || true
-        radon cc -nc tests.py >> post_traces/radon.log 2>&1 || true
+        radon cc hw2_debugging.py -a> post_traces/radon.log 2>&1 || true
+        radon cc rand.py -a>> post_traces/radon.log 2>&1 || true
+        radon cc tests.py -a>> post_traces/radon.log 2>&1 || true
     
 
     - name: Upload Pylint Log
