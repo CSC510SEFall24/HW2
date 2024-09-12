@@ -9,6 +9,6 @@
 <p align="center">
   <img src="https://github.com/CSC510SEFall24/HW2/actions/workflows/tests_and_lint.yml/badge.svg" alt="GitHub workflow badge">
   <a href="https://codecov.io/gh/CSC510SEFall24/HW2" >
-    <img src="https://codecov.io/gh/CSC510SEFall24/HW2/graph/badge.svg?token=L4EMYRC1ZG"/>
+    <img src="https://codecov.io/gh/CSC510SEFall24/HW2/graph/badge.svg?token=RD0Q9W5H2Y"/>
   </a>
 </p>
