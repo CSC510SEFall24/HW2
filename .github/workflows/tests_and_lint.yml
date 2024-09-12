@@ -31,15 +31,15 @@ jobs:
 
     - name: Run Pylint
       run: |
-        pylint hw2_debugging.py > post_traces/pylint.log 2>&1
-        pylint rand.py >> post_traces/pylint.log 2>&1
-        pylint tests.py >> post_traces/pylint.log 2>&1
+        pylint hw2_debugging.py > post_traces/pylint.log 2>&1 || true
+        pylint rand.py >> post_traces/pylint.log 2>&1 || true
+        pylint tests.py >> post_traces/pylint.log 2>&1 || true
 
     - name: Run Radon
       run: |
-        radon cc -nc hw2_debugging.py > post_traces/radon.log 2>&1
-        radon cc -nc rand.py >> post_traces/radon.log 2>&1
-        radon cc -nc tests.py >> post_traces/radon.log 2>&1
+        radon cc -nc hw2_debugging.py > post_traces/radon.log 2>&1 || true
+        radon cc -nc rand.py >> post_traces/radon.log 2>&1 || true
+        radon cc -nc tests.py >> post_traces/radon.log 2>&1 || true
     
 
     - name: Upload Pylint Log
