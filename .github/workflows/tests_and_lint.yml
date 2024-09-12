@@ -23,6 +23,11 @@ jobs:
     - name: Create log directory
       run: |
         mkdir -p post_traces/logs
+    - name: List Python files
+      run: |
+        find . -name "*.py"      - name: List Python files
+        run: |
+          find . -name "*.py"
     - name: Run Pylint
       run: |
         find . -name "*.py" | xargs pylint > post_traces/logs/pylint.log
