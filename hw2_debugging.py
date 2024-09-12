@@ -34,20 +34,19 @@ def recombine(left_arr, right_arr):
     """
     left_index = 0
     right_index = 0
-    merge_arr = [None] * (len(left_arr) + len(right_arr))
+    # Initialize an empty list instead of a fixed-size array with None values
+    merge_arr = []
     while left_index < len(left_arr) and right_index < len(right_arr):
         if left_arr[left_index] < right_arr[right_index]:
-            right_index += 1
-            merge_arr[left_index + right_index] = left_arr[left_index]
-        else:
+            merge_arr.append(left_arr[left_index])
             left_index += 1
-            merge_arr[left_index + right_index] = right_arr[right_index]
+        else:
+            merge_arr.append(right_arr[right_index])
+            right_index += 1
 
-    for i in range(right_index, len(right_arr)):
-        merge_arr[left_index + right_index] = right_arr[i]
-
-    for i in range(left_index, len(left_arr)):
-        merge_arr[left_index + right_index] = left_arr[i]
+    # Add the remaining elements of both arrays
+    merge_arr.extend(right_arr[right_index:])
+    merge_arr.extend(left_arr[left_index:])
 
     return merge_arr
 
