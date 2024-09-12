@@ -29,19 +29,15 @@ jobs:
 
     - name: Run Pylint
       run: |
-        for file in $(find . -name "*.py"); do
-          pylint "$file" >> post_traces/logs/pylint.log 2>&1
-        done
+        pylint hw2_debugging.py tests.py rand.py > post_traces/logs/pylint.log 2>&1
 
     - name: Run Radon
       run: |
-        for file in $(find . -name "*.py"); do
-          radon cc -nc "$file" >> post_traces/logs/radon.log 2>&1
-        done
+        radon cc -nc hw2_debugging.py tests.py rand.py > post_traces/logs/radon.log 2>&1
 
     - name: Test with pytest
       run: |
-        pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html > post_traces/logs/pytest.log
+        pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html 
 
     - name: Upload coverage to Codecov
       if: always()
