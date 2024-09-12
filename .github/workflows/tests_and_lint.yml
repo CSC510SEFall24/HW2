@@ -27,17 +27,17 @@ jobs:
       run: |
         mkdir -p post_traces/logs junit
 
-    - name: List Python files
-      run: |
-        find . -name "*.py"
-
     - name: Run Pylint
       run: |
-        find . -name "*.py" -print0 | xargs -0 pylint > post_traces/logs/pylint.log
+        for file in $(find . -name "*.py"); do
+          pylint "$file" >> post_traces/logs/pylint.log 2>&1
+        done
 
     - name: Run Radon
       run: |
-        find . -name "*.py" -print0 | xargs -0 radon cc -nc > post_traces/logs/radon.log
+        for file in $(find . -name "*.py"); do
+          radon cc -nc "$file" >> post_traces/logs/radon.log 2>&1
+        done
 
     - name: Test with pytest
       run: |
