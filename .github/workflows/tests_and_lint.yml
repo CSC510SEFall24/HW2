@@ -25,40 +25,34 @@ jobs:
 
     - name: Create log directory and files
       run: |
-        mkdir -p post_traces/logs junit
-        touch post_traces/logs/pylint.log
-        touch post_traces/logs/radon.log
-        chmod 755 post_traces
-        chmod 755 post_traces/logs
+        mkdir -p post_traces
+        touch post_traces/pylint.log
+        touch post_traces/radon.log
 
     - name: Run Pylint
       run: |
-        pylint hw2_debugging.py > post_traces/logs/pylint.log 2>&1
-
-        pylint rand.py >> post_traces/logs/pylint.log 2>&1
-
-        pylint tests.py >> post_traces/logs/pylint.log 2>&1
+        pylint hw2_debugging.py > post_traces/pylint.log 2>&1
+        pylint rand.py >> post_traces/pylint.log 2>&1
+        pylint tests.py >> post_traces/pylint.log 2>&1
 
     - name: Run Radon
       run: |
-        radon cc -nc hw2_debugging.py > post_traces/logs/radon.log 2>&1
-
-        radon cc -nc rand.py >> post_traces/logs/radon.log 2>&1
-
-        radon cc -nc tests.py >> post_traces/logs/radon.log 2>&1
+        radon cc -nc hw2_debugging.py > post_traces/radon.log 2>&1
+        radon cc -nc rand.py >> post_traces/radon.log 2>&1
+        radon cc -nc tests.py >> post_traces/radon.log 2>&1
     
 
     - name: Upload Pylint Log
       uses: actions/upload-artifact@v3
       with:
         name: pylint-log
-        path: post_traces/logs/pylint.log
+        path: post_traces/pylint.log
 
     - name: Upload Radon Log
       uses: actions/upload-artifact@v3
       with:
         name: radon-log
-        path: post_traces/logs/radon.log
+        path: post_traces/radon.log
 
     - name: Test with pytest
       run: |
